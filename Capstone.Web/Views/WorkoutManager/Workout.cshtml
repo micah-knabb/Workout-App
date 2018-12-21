@@ -1,0 +1,106 @@
+﻿@section Title{
+    Customize Workout    
+}
+
+@section Stylesheet{
+    <link rel="stylesheet" href="~/Content/ViewStyleSheets/Workout.css" />
+}
+
+@section Scripts{
+    <script src="~/Scripts/Scripts for Views/WorkoutAjax.js" defer></script>
+}
+@model WorkoutService.WorkoutView
+
+    <div class="container" id="workoutBox" data-exercises="@Model.Exercises.Count">
+        <h1 class="workoutTitle text-center">Workout- @Model.WorkoutName</h1>
+
+        <div class="accordion col" id="acordianExample">
+            <div class="card container">
+                <div class="card-header row specialHeader text-center">
+                    @*<div class="col-md-3"></div>*@
+                    <div class="col-md-3 order content">
+                        Order
+                    </div>
+                    <div class="col-md-3 name content">
+                        Exercise
+                    </div>
+                    <div class="col-md-2 info content">
+                        Sets
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
+            @foreach (var exercise in Model.Exercises)
+            {
+                <div id="@exercise.Id" class="card container">
+                    <div class="card-header row text-center" id="heading@(exercise.Id)" data-type="@exercise.Type">
+                        @*<div class="col-sm-1"></div>*@
+                        <div class="col-md-3">
+                            <button id="@(exercise.Order)" class="btn btn-link downLink"><i class="fas fa-caret-up"></i></button>
+                            <div class="exOrder">@exercise.Order</div>
+                            <button id="@(exercise.Order)" class="btn btn-link upLink"><i class="fas fa-caret-down"></i></button>
+                        </div>
+
+                        <button type="button" class="btn addExerciseRow col-md-3" disabled>@exercise.ExerciseName</button>
+                        @*<div class="col-md-3">@exercise.ExerciseName</div>*@
+                        @if (exercise.Type == 3 || exercise.Type == 1)
+                        {
+                            <div class="col-md-2">@exercise.SetCount</div>
+                        }
+                        else if (exercise.Type == 2)
+                        {
+                            <div class="col-md-2">1</div>
+                        }
+                        <div class="col-md-4">
+
+                            <button id="@exercise.Id" class="details btn btn-link" type="button" data-toggle="collapse" data-target="#collapse@(exercise.Id)" aria-expanded="true" aria-controls="collapse@(exercise.Id)">Details</button>
+                            |
+                            <a href="~/WorkoutManager/Edit@(exercise.TypeName)?id=@exercise.Id" class="btn btn-link editExercBtn" role="button">Edit</a>
+                            |
+                            <button class="btn btn-link deleteExercBtn" type="submit" data-id="@exercise.Id">Delete</button>
+
+                        </div>
+                        @*<div class="col-sm-1"></div>*@
+                    </div>
+
+                    <div id="collapse@(exercise.Id)" class="container collapse detailCollapse" aria-labelledby="heading@(exercise.Id)" data-parent="#acordianExample">
+                        <div class="card-body">
+                            <div class="row imgCol">
+                                <div class="col"></div>
+                                <div class="col-md-5 appendHere@(exercise.Id)"></div>
+                                <div class="col-md-5 videoCont">
+                                    <a class="" href="@exercise.VideoLink" target="_blank"><img class="col-12" src="@exercise.Description" /></a>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="card container">
+                <div class="card-header row addExerciseRow">
+                    <button id="addExercise" class="details btn btn-link addLink" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapsehelp">
+                        Add Exercise +
+                    </button>
+                    <div class="text-right">
+                        <a class="btn btn-secondary" href="~/WorkoutManager">Dashboard</a>
+                    </div>
+                </div>
+                <div id="collapse" class="collapse" aria-labelledby="headinghelp" data-parent="#acordianExample">
+                    <div class="card-body text-center">
+                        @foreach (var type in WorkoutService.WorkoutView.Types)
+                        {
+                            <div class="btn-group">
+                                <button id="@type" type="button" class="btn btn-secondary dropdown-toggle exerciseDrpDwn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @type
+                                </button>
+                                <form id="dropdown" class="dropdown-menu" action="Add@(type)" method="post"></form>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

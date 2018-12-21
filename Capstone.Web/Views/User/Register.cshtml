@@ -1,0 +1,69 @@
+﻿@section Title {
+    Register
+}
+
+@section Scripts {
+    <script src="~/Scripts/Validation/RegisterValidation.js" defer></script>
+
+}
+
+@section StyleSheet {
+    <link rel="stylesheet" href="~/Content/ViewStyleSheets/Registration.css" />
+}
+
+    <div class="container regContainer">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="container registerBox col">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-sm-10">
+                        @using (Html.BeginForm("Register", "User", FormMethod.Post, new { id = "Registration" }))
+                        {
+                            <div class="form-group row">
+                                @Html.Label("First Name", new { @class = "label col-4" })
+                                @Html.TextBox("FirstName", "", new { @class = "form-control col-7", placeholder = "Enter First Name" })
+                                @Html.ValidationMessage("FirstName", new { @class = "error" })
+                            </div>
+                            <div class="form-group row">
+                                @Html.Label("Last Name", new { @class = "label col-4" })
+                                @Html.TextBox("LastName", "", new { @class = "form-control col-7", placeholder = "Enter Last Name" })
+                                @Html.ValidationMessage("LastName", new { @class = "error" })
+                            </div>
+                            <div class="form-group row" name="EmailAddress">
+                                @Html.Label("Email", new { @class = "label col-4" })
+                                @Html.TextBox("Email", "", new { @class = "form-control col-7", placeholder = "Enter Email" })
+                                @Html.ValidationMessage("Email", new { @class = "error" })
+                            </div>
+                            <div class="form-group row">
+                                @Html.Label("Username", new { @class = "label col-4" })
+                                @Html.TextBox("Username", "", new { @class = "form-control col-7", placeholder = "Enter Username" })
+                                @Html.ValidationMessage("Username", new { @class = "error" })
+                            </div>
+                            <div class="form-group row">
+                                @Html.Label("Password", new { @class = "label col-4" })
+                                @Html.Password("Password", "", new { @class = "form-control col-7", placeholder = "Enter Password" })
+                                @Html.ValidationMessage("Password", new { @class = "error" })
+                            </div>
+                            <div class="form-group row">
+                                @Html.Label("Confirm Password", new { @class = "label col-4" })
+                                @Html.Password("ConfirmPassword", "", new { @class = "form-control col-7", placeholder = "Re-type Password" })
+                                @Html.ValidationMessage("ConfirmPassword", new { @class = "error" })
+                            </div>
+                            <div class="row">
+                                <div class="col"></div>
+                                <button type="submit" class="btn btn-default btn-secondary col">Register</button>
+                                <div>
+                                    @Html.ValidationMessage("invalid-user", new { @class = "error" })
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                        }
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+

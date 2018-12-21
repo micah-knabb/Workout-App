@@ -1,0 +1,63 @@
+﻿
+#editButton {
+    margin-top: 20px;
+    align-self: center;
+}
+#name, #email {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#nameTitle, #name, #emailTitle, #email {
+    display: inline-block;
+}
+#nameTitle, #emailTitle {
+    font-weight: bold;
+}
+h3 {
+    margin-top: 10px;
+}
+.addWorkoutBtn, #saveBtn, .detailLink {
+   background-color: darkcyan;
+   color: white;
+}
+.addWorkoutBtn:hover, #saveBtn:hover, .detailLink:hover {
+   background-color: cadetblue;
+}
+.deleteWorkout:hover {
+    background-color: darkred;
+}
+.workoutNameInput {
+    margin-left: 20px;
+}
+/*.debug {
+    border: solid red;
+}*/
+
+img.col {
+    max-height: 150px;
+    max-width: 150px;
+}
+.btn-link {
+    padding: 0px;
+    margin: 0px;
+}
+.details {
+    
+}
+.deleteExercBtn {
+    color: red!important;
+}
+.card {
+    border-color: lightslategrey;
+}
+.infoRow {
+    padding-top: 15px;
+}
+
+.betterColumn {
+    padding: 0px !important;
+}
+
+.startWorkout{
+    
+}

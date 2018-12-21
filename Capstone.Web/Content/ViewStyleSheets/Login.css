@@ -1,0 +1,19 @@
+﻿.logContainer {
+    margin-top: 20px;
+}
+.loginBox {
+    background-color: cadetblue;
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: whitesmoke;
+}
+.label, .form-control {
+    display: inline;
+}
+.registerAccount {
+    margin-bottom: 7px;
+}
+.registerAccount a {
+    color: paleturquoise;
+}

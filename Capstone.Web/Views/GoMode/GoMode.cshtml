@@ -1,0 +1,44 @@
+﻿@section Title
+{
+    GoMode
+}
+@section StyleSheet{
+    <link rel="stylesheet" href="~/Content/GoMode/GoMode.css" />
+}
+@section Scripts{
+    <script src="~/Scripts/GoMode/Main.js" defer></script>
+}
+@model Int32
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<a href="@Url.Action("Exit")" class="btn btn-lg btn-danger float-right">Exit</a>
+<div style="bottom: 0;">
+    <div class="debug">
+        <div id="main" class="align-middle" data-workout="@Model">
+            <h1 id="title" class="text-center"></h1>
+            <div id="cont" class="container">
+                <div class="row">
+                    <div class="col"></div>
+                    <div id="sets" class="text-center col-md-4"></div>
+                    <div id="exercImage" class="col-md-7"></div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fixed-bottom row">
+    <div class="col-1"></div>
+    <button id="prev" class="btn btn-lg btn-secondary col-5">
+        Prev
+    </button>
+    <div id="greenBtn" class="col-5 betterColumn">
+        <button id="next" class="btn btn-lg btn-info col-12">
+            Next
+        </button>
+    </div>
+    <div class="col-1"></div>
+</div>
+

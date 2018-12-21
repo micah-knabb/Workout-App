@@ -1,0 +1,24 @@
+﻿
+.debug {
+    /*border: solid red;*/
+}
+
+.error{
+    color: red;
+}
+.active a {
+    color: black!important;
+}
+.navbar-brand {
+    font-family: 'Unlock', cursive;
+    font-size: 50px;
+}
+.navbar {
+    background-image: linear-gradient(to right, gainsboro, slategray) !important;
+}
+.fa-wolf-pack-battalion {
+    color: darkcyan;
+}
+.workoutTitle, .card-title, #title, .titleRow {
+    font-family: 'Unlock', cursive;
+}

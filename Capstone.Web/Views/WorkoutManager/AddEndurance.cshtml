@@ -1,0 +1,100 @@
+﻿@section Title{
+    Strength
+}
+@section StyleSheet{
+    <link rel="stylesheet" href="~/Content/ViewStyleSheets/Strength.css" />
+}
+@section Scripts{
+    <script src="~/Scripts/Scripts for Views/UpdateEnduranceExercise.js" defer></script>
+}
+
+@model WorkoutService.ExerciseObject
+
+<div id="main" class="container" data-id="@Model.Id">
+    <div class="row">
+        <div class="col-1"></div>
+        <h4 class="col titleRow">@Model.Exercise.Name</h4>
+        <div class="col-1"></div>
+    </div>
+    <div class="container exercBox">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="accordion col-sm-10" id="accordionExample">
+                <div class="card container">
+                    <div class="card-header exercNameRow row" id="headingTwo">
+                        <div class="col">Duration</div>
+                        <div class="col">Distance</div>
+                        <div class="col">Intensity</div>
+                    </div>
+                </div>
+                <div id="addSetHere">
+                    @if (Model.SetList.Count > 0)
+                    {
+                        <div id ="idHere"class="card container" data-id="@Model.SetList[0].Id">
+                            <div class="card-header setRow row">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col setInfo">@Model.SetList[0].Time min</div>
+                                        <div class="col setInfo">@Model.SetList[0].Distance mi</div>
+                                        <div class="col setInfo">@Model.SetList[0].Intensity</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="card container">
+                    <div class="card-header addSetRow row" id="headingOne">
+                        <button class="btn btn-link addLink" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Edit
+                        </button>
+                    </div>
+
+                    <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            @using (Html.BeginForm("AddEnduranceSet", "WorkoutManager", FormMethod.Post, new { id = "addSet" }))
+                            {
+                                <div class="form-group row">
+                                    <div class="col"></div>
+                                    @Html.Label("Time (in min)", new { @class = "label col-md-4" })
+                                    @Html.TextBox("time", "", new { @class = "form-control col-md-2", placeholder = "" })
+                                    @Html.ValidationMessage("Distance", new { @class = "error" })
+                                    <div class="col"></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col"></div>
+                                    @Html.Label("Distance (in miles)", new { @class = "label col-md-4" })
+                                    @Html.TextBox("distance", "", new { @class = "form-control col-md-2", placeholder = "" })
+                                    @Html.ValidationMessage("Distance", new { @class = "error" })
+                                    <div class="col"></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col"></div>
+                                    @Html.Label("Intensity", new { @class = "label col-md-4" })
+                                    @Html.TextBox("intensity", "", new { @class = "form-control col-md-2", placeholder = "" })
+                                    @Html.ValidationMessage("Distance", new { @class = "error" })
+                                    <div class="col"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col"></div>
+                                    <div class="col-md-4"></div>
+                                    <button type="submit" class="btn btn-default btn-secondary col-md-2">Save</button>
+                                    <div class="col"></div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-sm-3 donBtn">
+                <a class="btn btn-secondary col-12" href="~/WorkoutManager/Workout/@Model.WorkoutID">Done</a>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+@using WorkoutService
+@using Capstone.Web.Controllers
+@{
+    var userInfo = Session[BaseController.UserKey] as User;
+    string login = "Login";
+    if (Session[BaseController.UserKey] != null)
+    {
+        login = "Logout - " + userInfo.FirstName + " " + userInfo.LastName;
+    }
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <script src="~/Scripts/Scripts for Views/Global.js"></script>
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Karma|Unlock" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link href="~/Content/ViewStyleSheets/Site.css" rel="stylesheet" type="text/css" />
+    @RenderSection("StyleSheet", false)
+
+    <script src="~/Scripts/jquery-3.3.1.js" defer></script>
+    <script src="~/Scripts/jquery.validate.js" defer></script>
+    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.js " defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="~/Scripts/bootstrap.min.js" defer></script>
+    @RenderSection("Scripts", false)
+
+    <title>@RenderSection("Title", true)</title>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-static-top navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="~/Home">ALFA <i class="fab fa-wolf-pack-battalion"></i></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active homeNav">
+                        <a class="nav-link" href="~/Home">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dashboardNav">
+                        <a class="nav-link" href="~/WorkoutManager">Dashboard <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item loginNav">
+                        <a class="nav-link" href="~/User/Login/">@login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section>
+        @RenderBody()
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+﻿@section Title{
+    Bodyweight
+}
+@section StyleSheet{
+    <link rel="stylesheet" href="~/Content/ViewStyleSheets/Strength.css" />
+}
+@section Scripts{
+    <script src="~/Scripts/Scripts for Views/AddSetBodyweight.js" defer></script>
+}
+
+@model WorkoutService.ExerciseObject
+
+    <div id="main" class="container" data-id="@Model.Id" data-exercises="@Model.SetList.Count">
+        <div class="row">
+            <div class="col-1"></div>
+            <h4 class="col titleRow">@Model.Exercise.Name</h4>
+            <div class="col-1"></div>
+        </div>
+        <div class="container exercBox">
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="accordion col-sm-10" id="accordionExample">
+                    <div class="card container">
+                        <div class="card-header exercNameRow row" id="headingTwo">
+                            <div class="col-md-3">Order</div>
+                            <div class="col">Reps</div>
+                            <div class="col"></div>
+                        </div>
+                    </div>
+                    <div id="addSetHere">
+                        @if (Model.SetList.Count > 0)
+                        {
+                            foreach (var set in Model.SetList)
+                            {
+                                <div class="card container">
+                                    <div class="card-header setRow row">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-3 setInfo">
+                                                    <button id="@set.Order" class="btn btn-link fas fa-caret-up downLink"></button>
+                                                    <div class="setInfo">@set.Order</div>
+                                                    <button id="@set.Order" class="btn btn-link fas fa-caret-down upLink"></button>
+                                                </div>
+                                                <div class="col setInfo">@set.Reps</div>
+                                                <div id="@set.Id" class="col btn btn-link deleteSet downLink">Delete</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        }
+
+                    </div>
+
+                    <div class="card container">
+                        <div class="card-header addSetRow row" id="headingOne">
+                            <button class="btn btn-link addLink" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Add Set +
+                            </button>
+                        </div>
+
+                        <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                @using (Html.BeginForm("AddStrengthSet", "WorkoutManager", FormMethod.Post, new { id = "addSet" }))
+                                {
+                                    <div class="form-group row">
+                                        <div class="col"></div>
+                                        @Html.Label("Number of Reps", new { @class = "label col-md-4" })
+                                        @Html.TextBox("reps", "", new { @class = "form-control col-md-2", placeholder = "" })
+                                        @Html.ValidationMessage("Reps", new { @class = "error" })
+                                        <div class="col"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col"></div>
+                                        <div class="col-md-4"></div>
+                                        <button type="submit" class="btn btn-default btn-secondary col-md-2">Save</button>
+                                        <div class="col"></div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-sm-3 donBtn">
+                    <a class="btn btn-secondary col-12" href="~/WorkoutManager/Workout/@Model.WorkoutID">Done</a>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    </div>

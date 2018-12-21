@@ -1,0 +1,135 @@
+﻿@section Title{
+    Dashboard
+}
+@section StyleSheet{
+    <link rel="stylesheet" href="~/Content/ViewStyleSheets/Dashboard.css" />
+}
+@section Scripts{
+    <script src="~/Scripts/Edit User/EditUser.js" defer></script>
+    <script src="~/Scripts/Scripts for Views/Dashboard.js" defer></script>
+}
+
+@model WorkoutService.DashboardView
+<div id="userInfo" class="container debug">
+    <div class="row infoRow">
+        <div class="debug">
+            @if (Model.User.PictureUrl != "")
+            {
+                <img class="col" src="@Model.User.PictureUrl" />
+            }
+            else
+            {
+                <img class="col" src="http://profilepicturesdp.com/wp-content/uploads/2018/07/profile-picture-empty-image-7.jpg" />
+            }
+        </div>
+        <div class="col-sm">
+            <div class="col container">
+                <div class="row">
+                    <div id="nameTitle">Name: </div><div id="name">@Model.User.FirstName @Model.User.LastName</div>
+                </div>
+                <div class="row">
+                    <div id="emailTitle">Email: </div><div id="email">@Model.User.Email</div>
+                </div>
+                <div class="row">
+                    <button type="button" class="btn btn-secondary" id="editButton" data-toggle="modal" data-target="#profileModal">Edit User Profile</button>
+                </div>
+                <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="profileModalLabel">Edit Profile</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                @*<div class="col-sm-4">*@
+                                @using (Html.BeginForm("UpdateProfile", "User", FormMethod.Post))
+                                {
+                                    @*<div class="form-group">
+                                        @Html.Label("Username:", new { @class = "col-form-label" })
+                                        @Html.TextBox("Username", "", new { @class = "form-control", placeholder = Model.User.Username })
+                                        @Html.ValidationMessage("username", new { @class = "error" })
+                                    </div>*@
+                                    <div class="form-group">
+                                        @Html.Label("First Name:", new { @class = "col-form-label" })
+                                        @Html.TextBox("FirstName", "", new { @class = "form-control", placeholder = Model.User.FirstName })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.Label("Last Name:", new { @class = "col-form-label" })
+                                        @Html.TextBox("LastName", "", new { @class = "form-control", placeholder = Model.User.LastName })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.Label("Email:", new { @class = "col-form-label" })
+                                        @Html.TextBox("Email", "", new { @class = "form-control", placeholder = Model.User.Email })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.Label("Enter an image url:", new { @class = "col-form-label" })
+                                        @Html.TextBox("PictureUrl", "", new { @class = "form-control", placeholder = Model.User.PictureUrl })
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-primary" id="saveBtn">Save changes</button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col">
+            <h5>Add a workout</h5>
+        </div>
+    </div>
+    <div>
+        @using (Html.BeginForm("SubmitNewWorkout", "WorkoutManager", FormMethod.Post, new { @class = "input-group mb-3 debug row" }))
+        {
+            @Html.TextBox("WorkoutName", "", new { @class = "form-control", placeholder = "Name your workout" })
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary addWorkoutBtn" type="submit" id="button-addon2">Add</button>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col">
+            <h4>Saved workouts</h4>
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var workout in Model.Workouts)
+        {
+        <div class="betterColumn col-sm-4 debug">
+            <div id="@workout.Id" class="card" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">@workout.WorkoutName</h5>
+                    <p class="card-text">Number of Exercises: @workout.NumberofExercises</p>
+                </div>
+                <div class="card-footer text-center btn-info">
+                    <a class="btn btn-sm btn-info detailLink" href="~/WorkoutManager/Workout/@workout.Id">View/Edit</a>
+                    <button id="@workout.Id" class="btn btn-sm btn-danger deleteWorkoutBtn" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                    <a class="btn btn-sm btn-success startWorkout" href="~/GoMode/Start/@workout.Id">Start workout</a>
+                </div>
+            </div>
+        </div>
+            
+        }
+    </div>
+        @*<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmDeleteLabel">Confirm?</h5>
+                    </div>
+                    <div class="modal-body">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="confirm" data-id="1">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@

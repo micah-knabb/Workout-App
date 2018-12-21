@@ -1,0 +1,17 @@
+﻿body {
+}
+.regContainer {
+    margin-top: 20px;
+}
+.registerBox {
+    background-color: cadetblue;
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.label, .form-control {
+    display: inline;
+}
+.label {
+    color: whitesmoke;
+}

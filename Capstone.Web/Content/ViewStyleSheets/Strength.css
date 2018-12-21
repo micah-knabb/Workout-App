@@ -1,0 +1,37 @@
+﻿body {
+}
+.titleRow, .exercNameRow {
+    text-align: center;
+}
+.exercBox {
+    border-radius: 7px;
+}
+.exercNameRow {
+    background-color: black;
+    color:gainsboro;  
+}
+.exercNameRow div {
+    display: inline;
+}
+.addSetRow {
+    background-color: darkcyan;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.doneBtn {
+    margin-top: 6px;
+}
+.setInfo {
+    display: inline;
+    text-align: center;
+}
+.fas {
+    display: inline;
+}
+
+label.error​ {
+    display: block!important
+}
+.addLink {
+    color: gainsboro;
+}

@@ -1,0 +1,95 @@
+﻿body {
+}
+#carouselExampleFade {
+    max-height:380px;
+}
+.homeInfo {
+    color: whitesmoke;
+    margin-bottom: 10px;
+    background-color: black;
+    padding-bottom: 3px;
+}
+.carousel {
+    overflow:hidden;
+}
+.brandName {
+    margin-bottom: -20px;
+    font-size: 110%;
+}
+.reviewBox {
+    background-color: gainsboro;
+    border-radius: 7px;
+    margin-bottom: 20px;
+}
+.reviewHeader {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    color: whitesmoke;
+    border-bottom: ridge whitesmoke;
+    background-color: darkcyan;
+    border-radius: 7px;
+}
+.imgCol {
+    text-align: center;
+    color: #44494c;
+}
+.imgCol img {
+    width:100%;
+    height: auto;
+    max-width: 120px;
+    border-radius: 100%;
+}
+.contentBox {
+    padding-bottom: 10px;
+}
+.userInfo {
+    text-align: center;
+}
+.customWktsBox, .excBox, .setBox {
+    margin-bottom: 5px;
+    background-color: whitesmoke;
+    border-radius: 7px;
+}
+
+.infoHeader {
+    background-color: darkcyan;
+    color:whitesmoke;
+    border-radius: 7px;
+    border-bottom: ridge whitesmoke;
+}
+.infoText {
+    border-radius: 7px;
+    margin-bottom: 10px;
+    color: #44494c;
+}
+
+.infoText ul li {
+    border-radius: 7px;
+    margin-bottom: 2px;
+}
+.userText {
+    font-style: italic;
+    background-color: whitesmoke;
+    border-radius: 7px;
+    color: #44494c;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 30px;
+}
+.userRow {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.firstUser {
+    padding-top: 10px;
+}
+.lastUser {
+    padding-bottom: 10px;
+}
+.signUpBtn {
+    color: white!important;
+    margin-bottom: 20px;
+}
+.userInfo {
+    margin-bottom: 15px;
+}

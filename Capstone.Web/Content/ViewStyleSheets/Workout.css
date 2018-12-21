@@ -1,0 +1,71 @@
+﻿.workoutTitle {
+    text-align: center;
+}
+
+.specialHeader {
+    background-color: black;
+    color: white;
+}
+#workoutBox {
+    margin-top: 20px;
+}
+.dropdown, .dropup, .exOrder {
+    display: inline-block;
+}
+
+.detailCollapse {
+    align-self: center;
+}
+.addExerciseRow {
+    background-color: darkcyan;
+    color: white;
+}
+#addExercise {
+    color: gainsboro;
+}
+
+button.deleteExercBtn {
+    color: crimson!important;
+}
+button.btn-link {
+    color: darkcyan;
+}
+a.btn-link {
+    color: darkcyan;
+}
+button.btn-link:hover {
+    color: darkslategray;
+}
+.linkContainer div {
+    display: inline-block;
+}
+
+.set {
+    min-width: 72px;
+    font-weight: bold;
+    text-align: center;
+}
+.reps {
+    margin-bottom: 4px;
+    min-width: 90px;
+}
+.weight {
+    margin-bottom: 7px;
+    min-width: 108px;
+}
+a.videoCont img {
+    width: auto;
+    height: 100%;
+}
+.detailBox {
+    border: solid darkcyan;
+    border-radius: 7px;
+    background-color: whitesmoke;
+    color: #52585b;
+    margin-bottom: 4px;
+}
+
+.accordion {
+    margin-bottom: 40px;
+}
+

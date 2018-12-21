@@ -1,0 +1,24 @@
+﻿@section Title
+{
+    ???
+}
+@section StyleSheet{
+    <link rel="stylesheet" href="~/Content/GoMode/GoMode.css" />
+}
+@section Scripts{
+}
+<div style="bottom: 0;">
+    <div class="debug">
+        <div id="main" class="align-middle" data-workout="@Model">
+            <h1 id="title" class="text-center">This workout is empty</h1>
+            <div id="sets" class="text-center">Add exercises in the workout manager</div>
+        </div>
+    </div>
+</div>
+
+
+<div class="text-center">
+    <a href="@Url.Action("Exit")" class="btn btn-danger">Exit</a>
+</div>
+
+

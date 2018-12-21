@@ -1,0 +1,35 @@
+﻿body {
+}
+#title {
+    margin-bottom: 20px;
+}
+#exercImage {
+    text-align: center;
+}
+#exercImage .exImg {
+    height:100%;
+    width: auto;
+    max-height: 180px;
+}
+#greenBtn {
+}
+.reps {
+    text-align: left;
+}
+.set {
+    text-align: center;
+    font-weight: bold;
+}
+.exercBox {
+    margin-bottom: 5px;
+    border-radius: 6px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border: solid cadetblue;
+    background-color:white;
+    margin-top: 10px;
+
+}
+.betterColumn {
+    padding: 0px !important;
+}

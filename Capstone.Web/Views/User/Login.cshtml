@@ -1,0 +1,62 @@
+﻿@section Title {
+    Login
+}
+
+@section Scripts {
+    <script src="~/Scripts/Validation/LoginValidation.js" defer></script>
+    <script src="~/Scripts/Scripts for Views/Login.js"></script>
+}
+
+@section StyleSheet {
+    <link rel="stylesheet" href="~/Content/ViewStyleSheets/Login.css" /> 
+}
+
+<div class="container logContainer">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="container loginBox col-md-6">
+            <div class="row loginHeader">
+                <div class="col"></div>
+                <div class="col-sm-10">
+                    @using (Html.BeginForm("Login", "User", FormMethod.Post, new { @id = "LoginForm" }))
+                    {
+                        <div class="form-group row">
+                            @Html.Label("Username", new { @class = "label col-4" })
+                            @Html.TextBox("Username", "", new { @class = "form-control col-7", placeholder = "User Name" })
+                            @Html.ValidationMessage("Username", new { @class = "error" })
+                        </div>
+                        <div class="form-group row">
+                            @Html.Label("Password", new { @class = "label col-4" })
+                            @Html.Password("Password", "", new { @class = "form-control col-7", placeholder = "Password" })
+                            @Html.ValidationMessage("Password", new { @class = "error col-7" })
+
+                        </div>
+                        <div class="row">
+                            <div class="col-4"></div>
+                            <div class="registerAccount col-7">
+                                @Html.ActionLink("Create new account", "Register")
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col"></div>
+                            <button type="submit" class="btn btn-default btn-secondary col">Login</button>
+                            <div> 
+                                @Html.ValidationMessage("invalid-user", new { @class = "error" })
+                            </div>
+                            <div class="col"></div>
+                        </div>
+
+                    }
+                </div>
+                <div class="col"></div>
+            </div>
+           
+        </div>
+        <div class="col-sm-3"></div>
+        
+    </div>
+    
+</div>
+
+
